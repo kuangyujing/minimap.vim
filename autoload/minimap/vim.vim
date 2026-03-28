@@ -137,15 +137,9 @@ function! s:close_auto() abort
         return
     endif
 
-    if g:minimap_did_quit
-        silent! call s:quit_last()
-    else
-        " Since we just closed a buffer, we want to completely wipe out
-        " the minimap tied to that buffer.
-        bwipeout
-    endif
     " In case the plugin accidentally highlights the main buffer.
     call s:clear_highlights()
+    silent! call s:quit_last()
 endfunction
 
 function! s:open_window() abort
